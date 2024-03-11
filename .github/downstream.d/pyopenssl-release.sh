@@ -2,7 +2,7 @@
 
 case "${1}" in
     install)
-        VERSION=$(curl https://pypi.org/pypi/pyOpenSSL/json | jq -r .info.version)
+        VERSION="23.2.0"
         git clone https://github.com/pyca/pyopenssl
         cd pyopenssl
         git checkout "$VERSION"

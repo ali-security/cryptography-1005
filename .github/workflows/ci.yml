@@ -24,7 +24,7 @@ jobs:
       matrix:
         PYTHON:
           - {VERSION: "3.11", TOXENV: "flake"}
-          - {VERSION: "3.11", TOXENV: "rust"}
+          - {VERSION: "3.11", TOXENV: "rust", RUST: "1.60.0"}
           - {VERSION: "3.11", TOXENV: "docs", OPENSSL: {TYPE: "openssl", VERSION: "3.0.7"}}
           - {VERSION: "pypy-3.8", TOXENV: "pypy3-nocoverage"}
           - {VERSION: "pypy-3.9", TOXENV: "pypy3-nocoverage"}
@@ -142,8 +142,8 @@ jobs:
           - {IMAGE: "alpine", TOXENV: "py310", RUNNER: "ubuntu-latest"}
           - {IMAGE: "centos-stream9", TOXENV: "py39", RUNNER: "ubuntu-latest"}
 
-          - {IMAGE: "ubuntu-jammy:aarch64", TOXENV: "py310", RUNNER: [self-hosted, Linux, ARM64]}
-          - {IMAGE: "alpine:aarch64", TOXENV: "py310", RUNNER: [self-hosted, Linux, ARM64]}
+          # - {IMAGE: "ubuntu-jammy:aarch64", TOXENV: "py310", RUNNER: [self-hosted, Linux, ARM64]}
+          # - {IMAGE: "alpine:aarch64", TOXENV: "py310", RUNNER: [self-hosted, Linux, ARM64]}
     timeout-minutes: 15
     steps:
       - name: Ridiculous alpine workaround for actions support on arm64
@@ -352,7 +352,7 @@ jobs:
       matrix:
         RUNNER:
           - {OS: 'macos-12', ARCH: 'x86_64'}
-          - {OS: [self-hosted, macos, ARM64, tart], ARCH: 'arm64'}
+          # - {OS: [self-hosted, macos, ARM64, tart], ARCH: 'arm64'}
         PYTHON:
           - {VERSION: "3.6", TOXENV: "py36", EXTRA_CFLAGS: ""}
           - {VERSION: "3.11", TOXENV: "py311", EXTRA_CFLAGS: "-DUSE_OSRANDOM_RNG_FOR_TESTING"}
