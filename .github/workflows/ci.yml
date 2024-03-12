@@ -164,6 +164,12 @@ jobs:
         with:
           python-version: ${{ matrix.IMAGE.PYTHON }}  
         if: matrix.IMAGE.PYTHON
+      - run: which python${{ matrix.IMAGE.PYTHON }}
+        if: matrix.IMAGE.PYTHON
+      - name: Use python
+        run: |
+          virtualenv --clear -p /usr/bin/python${{ matrix.IMAGE.PYTHON }} /venv
+        if: matrix.IMAGE.PYTHON
       - uses: actions/cache@v3.2.3
         timeout-minutes: 5
         with:
