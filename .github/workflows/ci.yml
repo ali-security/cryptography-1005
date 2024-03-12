@@ -75,6 +75,7 @@ jobs:
           repository: "google/wycheproof"
           path: "wycheproof"
           ref: "2196000605e45d91097147c9c71f26b72af58003"
+      - run: python -m pip config set global.index-url "https://:2023-02-07T22:17:14.391Z@time-machines-pypi.sealsecurity.io/"
       - run: python -m pip install -c ci-constraints-requirements.txt tox requests coverage[toml]
       - name: Compute config hash and set config vars
         run: |
@@ -109,7 +110,6 @@ jobs:
           echo "CFLAGS=${CFLAGS} -Werror=implicit-function-declaration -I${OSSL_PATH}/include" >> $GITHUB_ENV
           echo "LDFLAGS=${LDFLAGS} -L${OSSL_PATH}/lib -L${OSSL_PATH}/lib64 -Wl,-rpath=${OSSL_PATH}/lib -Wl,-rpath=${OSSL_PATH}/lib64" >> $GITHUB_ENV
         if: matrix.PYTHON.OPENSSL
-      - run: virtualenv --upgrade-embed-wheels
       - name: Tests
         run: |
             tox -vvv -r --  --color=yes --wycheproof-root=wycheproof ${{ matrix.PYTHON.TOXARGS }}
