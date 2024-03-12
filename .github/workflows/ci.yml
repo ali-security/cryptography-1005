@@ -76,7 +76,6 @@ jobs:
           path: "wycheproof"
           ref: "2196000605e45d91097147c9c71f26b72af58003"
       - run: python -m pip install -c ci-constraints-requirements.txt tox requests coverage[toml]
-      - run: python -m pip install -U setuptools pip wheel
       - name: Compute config hash and set config vars
         run: |
           DEFAULT_CONFIG_FLAGS="shared no-ssl2 no-ssl3"
