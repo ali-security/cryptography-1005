@@ -2,7 +2,7 @@
 
 case "${1}" in
     install)
-        git clone --depth=1 https://github.com/certbot/certbot
+        git clone https://github.com/certbot/certbot
         cd certbot
         git checkout 23090198bf132704f1c860d5b6b623a2fcb593f8
         git rev-parse HEAD

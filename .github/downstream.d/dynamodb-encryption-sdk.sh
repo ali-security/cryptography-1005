@@ -2,7 +2,7 @@
 
 case "${1}" in
     install)
-        git clone --depth=1 https://github.com/awslabs/aws-dynamodb-encryption-python
+        git clone https://github.com/awslabs/aws-dynamodb-encryption-python
         cd aws-dynamodb-encryption-python
         git checkout de31c5e4339bfdc0e237b4b53fb6e4958bed972f
         git rev-parse HEAD

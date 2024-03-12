@@ -2,7 +2,7 @@
 
 case "${1}" in
     install)
-        git clone --depth=1 https://github.com/awslabs/aws-encryption-sdk-python
+        git clone https://github.com/awslabs/aws-encryption-sdk-python
         cd aws-encryption-sdk-python
         git checkout 232653188558379bceeb884b3f74b56b07560f62
         git rev-parse HEAD
