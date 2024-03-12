@@ -271,7 +271,7 @@ jobs:
           - {VERSION: "3.11", TOXENV: "py311"}
         RUST:
           - beta
-          - nightly
+          - stable
     name: "Rust Coverage"
     timeout-minutes: 15
     env:
