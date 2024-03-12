@@ -66,9 +66,7 @@ elif [[ "${TYPE}" == "boringssl" ]]; then
   git clone https://boringssl.googlesource.com/boringssl
   pushd boringssl
   git checkout "${VERSION}"
-  ls -la
-  ls -la rust
-  ls -la rust/CMakelists.txt
+  sed -i '16d' rust/CMakeLists.txt
   mkdir build
   pushd build
   # Find the default rust target based on what rustc is built for
