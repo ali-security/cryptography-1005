@@ -195,7 +195,7 @@ jobs:
         if: matrix.IMAGE.FIPS
       - name: Use python
         run: |
-          ln -s $pythonLocation/bin/python${{ matrix.IMAGE.PYTHON }} /venv/bin/python
+          rm -f /venv/bin/python && ln -s $pythonLocation/bin/python${{ matrix.IMAGE.PYTHON }} /venv/bin/python
         if: matrix.IMAGE.PYTHON
       - run: /venv/bin/python -m pip install -c ci-constraints-requirements.txt tox coverage
       - run: '/venv/bin/tox -vvv -- --wycheproof-root="wycheproof"'
