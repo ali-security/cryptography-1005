@@ -166,10 +166,6 @@ jobs:
         if: matrix.IMAGE.PYTHON
       - run: which python${{ matrix.IMAGE.PYTHON }}
         if: matrix.IMAGE.PYTHON
-      - name: Use python
-        run: |
-          virtualenv --clear -p /usr/bin/python${{ matrix.IMAGE.PYTHON }} /venv
-        if: matrix.IMAGE.PYTHON
       - uses: actions/cache@v3.2.3
         timeout-minutes: 5
         with:
@@ -198,6 +194,10 @@ jobs:
           echo "CFLAGS=-DUSE_OSRANDOM_RNG_FOR_TESTING" >> $GITHUB_ENV
         if: matrix.IMAGE.FIPS
       - run: /venv/bin/python -m pip install -c ci-constraints-requirements.txt tox coverage
+      - name: Use python
+        run: |
+          virtualenv --clear -p $pythonLocation/bin/python${{ matrix.IMAGE.PYTHON }} /venv
+        if: matrix.IMAGE.PYTHON
       - run: '/venv/bin/tox -vvv -- --wycheproof-root="wycheproof"'
         env:
           TOXENV: ${{ matrix.IMAGE.TOXENV }}
