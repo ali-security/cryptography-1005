@@ -134,7 +134,7 @@ jobs:
           - {IMAGE: "bullseye", TOXENV: "py39", RUNNER: "ubuntu-latest"}
           - {IMAGE: "bookworm", TOXENV: "py311", RUNNER: "ubuntu-latest"}
           - {IMAGE: "sid", TOXENV: "py311", RUNNER: "ubuntu-latest"}
-          - {IMAGE: "ubuntu-bionic", TOXENV: "py36", RUNNER: "ubuntu-latest"}
+          - {IMAGE: "ubuntu-jammy", TOXENV: "py36", RUNNER: "ubuntu-latest"}
           - {IMAGE: "ubuntu-focal", TOXENV: "py38", RUNNER: "ubuntu-latest"}
           - {IMAGE: "ubuntu-jammy", TOXENV: "py310", RUNNER: "ubuntu-latest"}
           - {IMAGE: "ubuntu-rolling", TOXENV: "py310", RUNNER: "ubuntu-latest"}
