@@ -134,12 +134,12 @@ jobs:
           - {IMAGE: "bullseye", TOXENV: "py39", RUNNER: "ubuntu-latest"}
           - {IMAGE: "bookworm", TOXENV: "py311", RUNNER: "ubuntu-latest"}
           - {IMAGE: "sid", TOXENV: "py311", RUNNER: "ubuntu-latest"}
-          - {IMAGE: "ubuntu-jammy", TOXENV: "py36", RUNNER: "ubuntu-latest"}
+          - {IMAGE: "ubuntu-jammy", TOXENV: "py36", RUNNER: "ubuntu-latest", PYTHON: "3.6"}
           - {IMAGE: "ubuntu-focal", TOXENV: "py38", RUNNER: "ubuntu-latest"}
           - {IMAGE: "ubuntu-jammy", TOXENV: "py310", RUNNER: "ubuntu-latest"}
-          - {IMAGE: "ubuntu-rolling", TOXENV: "py310", RUNNER: "ubuntu-latest"}
-          - {IMAGE: "fedora", TOXENV: "py311", RUNNER: "ubuntu-latest"}
-          - {IMAGE: "alpine", TOXENV: "py310", RUNNER: "ubuntu-latest"}
+          - {IMAGE: "ubuntu-rolling", TOXENV: "py310", RUNNER: "ubuntu-latest", PYTHON: "3.10"}
+          - {IMAGE: "fedora", TOXENV: "py311", RUNNER: "ubuntu-latest", PYTHON: "3.11"}
+          - {IMAGE: "alpine", TOXENV: "py310", RUNNER: "ubuntu-latest", PYTHON: "3.10"}
           - {IMAGE: "centos-stream9", TOXENV: "py39", RUNNER: "ubuntu-latest"}
 
           # - {IMAGE: "ubuntu-jammy:aarch64", TOXENV: "py310", RUNNER: [self-hosted, Linux, ARM64]}
@@ -159,6 +159,11 @@ jobs:
         timeout-minutes: 3
         with:
           persist-credentials: false
+      - name: Setup python
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: ${{ matrix.PYTHON.VERSION }}  
+        if: matrix.IMAGE.PYTHON
       - uses: actions/cache@v3.2.3
         timeout-minutes: 5
         with:
