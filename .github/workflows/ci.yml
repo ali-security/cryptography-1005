@@ -162,7 +162,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v4.5.0
         with:
-          python-version: ${{ matrix.PYTHON.VERSION }}  
+          python-version: ${{ matrix.IMAGE.PYTHON }}  
         if: matrix.IMAGE.PYTHON
       - uses: actions/cache@v3.2.3
         timeout-minutes: 5
