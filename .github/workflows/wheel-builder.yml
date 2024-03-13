@@ -78,8 +78,6 @@ jobs:
           - PYTHON: { VERSION: "pp39-pypy39_pp73" }
             MANYLINUX: { NAME: "musllinux_1_1_aarch64", CONTAINER: "cryptography-musllinux_1_1:aarch64", RUNNER: [self-hosted, Linux, ARM64]}
           # We also don't build pypy wheels for anything except the latest manylinux
-          - PYTHON: { VERSION: "pp38-pypy38_pp73" }
-            MANYLINUX: { NAME: "manylinux2014_x86_64", CONTAINER: "cryptography-manylinux2014:x86_64", RUNNER: "ubuntu-latest"}
           - PYTHON: { VERSION: "pp39-pypy39_pp73" }
             MANYLINUX: { NAME: "manylinux2014_x86_64", CONTAINER: "cryptography-manylinux2014:x86_64", RUNNER: "ubuntu-latest"}
           - PYTHON: { VERSION: "pp38-pypy38_pp73" }
